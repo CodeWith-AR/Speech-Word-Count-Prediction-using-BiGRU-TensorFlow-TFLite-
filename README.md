@@ -161,7 +161,8 @@ True: 37 → Pred: 27.52
 ## ✅ 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://github.com/CodeWith-AR/Speech-Word-Count-Prediction-using-BiGRU-TensorFlow-TFLite-.git
+
 cd YOUR_REPO
 ```
 
@@ -305,6 +306,7 @@ This project is licensed under the MIT License.
 
 # 🙌 Author
 
+M.Abdur rehman
 Developed as part of a deep learning exploration project using TensorFlow and audio processing techniques.
 
 ---
@@ -312,20 +314,6 @@ Developed as part of a deep learning exploration project using TensorFlow and au
 # ⭐ If You Found This Useful
 
 Please consider starring the repository.
-
----
-
-# ✅ Bonus: requirements.txt
-
-Create a file called `requirements.txt`:
-
-```
-tensorflow
-librosa
-pandas
-scikit-learn
-numpy
-```
 
 ---
 
