@@ -163,7 +163,6 @@ True: 37 → Pred: 27.52
 ```bash
 git clone https://github.com/CodeWith-AR/Speech-Word-Count-Prediction-using-BiGRU-TensorFlow-TFLite-.git
 
-cd YOUR_REPO
 ```
 
 ---
