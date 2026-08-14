@@ -1,32 +1,6 @@
 # ============================================================
 # WORD-COUNT-FROM-AUDIO — GRU MODEL (CLEANED COLAB PIPELINE)
 # ============================================================
-# This merges your 3 iterations into ONE correct pipeline:
-#   - dataset download & extraction
-#   - MFCC + delta + delta2 feature extraction (39-dim, seq len 200)
-#   - Bidirectional GRU regression model with label normalization
-#   - Keras save -> SavedModel export -> TFLite conversion
-#   - TFLite inference + evaluation (with correct de-normalization)
-#   - Colab download helpers
-#
-# Fixes vs. your original notebook:
-#   - Kept only the IMPROVED model (MFCC+delta+delta2, Bi-GRU,
-#     normalized labels) — the earlier plain-MFCC model is redundant.
-#   - Re-added `unroll=True` on the GRU (present in v1's "TFLite
-#     compatible" comment, missing from the improved v2 model) —
-#     helps TFLite conversion avoid TensorList ops.
-#   - Fixed the TFLite evaluation step: it now de-normalizes
-#     predictions (`pred * y_std + y_mean`) before computing MAE.
-#     Your original eval cell was written for the un-normalized
-#     v1 model and would've given wrong MAE numbers on v2's output.
-#   - One consistent naming scheme throughout instead of 3 different
-#     sets of filenames (gru_speech_model / improved_model /
-#     final_wordcount_model).
-#   - Removed duplicate pip installs / imports across cells.
-#
-# Paste each "Cell" block into its own Colab cell, or run top-to-bottom
-# as a single script.
-# ============================================================
 
 # --- Cell 1: install dependencies -----------------------------------------
 !pip install -q gdown librosa tensorflow pandas scikit-learn
@@ -37,7 +11,7 @@ import tarfile
 import os
 
 file_id = "1YFnSYLe2kpPmIs8x3NxFWZD01YNEU8gV"
-url = f"https://drive.google.com/uc?id={file_id}"
+url = f"link of your google drive data set"
 archive_path = "dev-clean.tar.gz"
 
 gdown.download(url, archive_path, quiet=False)
@@ -241,16 +215,4 @@ from google.colab import files
 files.download(f"{MODEL_NAME}.keras")
 files.download(f"{MODEL_NAME}.tflite")
 
-# --- Cell 12: push to GitHub (optional template) --------------------------------------
-# Uncomment and fill in your details to push the saved model + this script to a repo.
-# Use a GitHub Personal Access Token (classic or fine-grained) instead of a password.
-#
-# !git config --global user.email "you@example.com"
-# !git config --global user.name "Your Name"
-#
-# !git clone https://<TOKEN>@github.com/<username>/<repo>.git
-# !cp wordcount_gru_model.keras wordcount_gru_model.tflite <repo>/
-# %cd <repo>
-# !git add .
-# !git commit -m "Add trained word-count GRU model"
-# !git push
+
